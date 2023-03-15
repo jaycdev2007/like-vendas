@@ -12,7 +12,7 @@ export function Main1() {
                 <Svg1 />
             </div>
             <p className="text-xl pb-20 md:hidden">Experimente 30 dias grátis</p>
-            <Button text="Experimente já" url="#"/>
+            <Button text="Experimente já" url="/login"/>
         </main>
     )
 }
