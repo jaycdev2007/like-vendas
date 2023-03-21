@@ -18,7 +18,7 @@ export function InputPassword({ isLogin,text,setPassword }: InputPasswordType) {
         <div className="max-w-[300px] flex flex-col gap-4 items-end">
             
             <div className="w-full flex gap-2 border-b border-black">
-                <input type={typeInput} value={value} placeholder={text} onChange={(e) => {
+                <input type={typeInput} value={value} placeholder={text} onChange={async(e) => {
                     setValue(e.target.value)
                     setPassword(e.target.value)
                 }} className="p-3 outline-none w-[80%]" />
