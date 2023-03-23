@@ -11,7 +11,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt">
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8601341061910635"
+     crossorigin="anonymous"></script>
+      </head>
       <body className='flex flex-col justify-center items-center'>{children}</body>
     </html>
   )
