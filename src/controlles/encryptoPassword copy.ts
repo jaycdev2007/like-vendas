@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js"
 
-export function decryptoPassword(password:string) {
-    return CryptoJS.enc.Base64.parse(password).toString(CryptoJS.enc.Utf8);
+export function encryptoPassword(password:string) {
+    return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(password))
 }
