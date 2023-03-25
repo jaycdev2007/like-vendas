@@ -71,7 +71,6 @@ type MainPageLoginType = {
             setErr("Não exite nenhuma loja cadastrada com esse email e senha")
             setLoad(false)
            }
-           localStorage.setItem("loja",JSON.stringify(res))
            document.location ="/dashbord"
            setLoad(false)
         }
