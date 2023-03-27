@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { Input } from "./input"
 import { InputPassword } from "./inputPassword"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { InputFile } from "./inputFile"
 import { createLoja } from "../controlles/createLoja"
 import { Spinner } from "phosphor-react"
@@ -10,7 +10,10 @@ import { checkEmail } from "../utils/checkEmail"
 import { checkPassword } from "../utils/checkPassword"
 import { loginLoja } from "../controlles/loginLoja"
 import { verificarEmail } from "@/controlles/verificarEmail"
-import { encryptoPassword } from "@/controlles/encryptoPassword copy"
+import { encryptoPassword } from "../controlles/encryptoPassword"
+import { ContextLoja } from "@/contexts/contextLoja"
+import { useContext } from "react"
+
 
 type MainPageLoginType = {
     heading: string,
@@ -26,7 +29,12 @@ type MainPageLoginType = {
         const [file,setFile] = useState<string>("")
         const [load,setLoad] = useState<boolean>(false)
         const [err,setErr] = useState<boolean | string>(false)
-    
+        const {loja,setLoja} = useContext(ContextLoja)
+
+        useEffect(() => {
+            localStorage.setItem("loja", JSON.stringify(loja));
+        },[loja])
+
         async function senLoja() {
             const checkemail = checkEmail(email)
             const checkpassword = checkPassword(password)
@@ -37,18 +45,20 @@ type MainPageLoginType = {
                 setErr(false)
                 setLoad(true)
                 const verificaremail = await verificarEmail(email)
-                if(verificaremail.length > 0) {
+                if(verificaremail != undefined) {
                     setErr(true)
                     setErr("Já exite uma loja cadastrada com esse email")
                     setLoad(false)
                 }else {
+                    setErr(false)
                     const passwordEncrypto = encryptoPassword(password)
-                    await createLoja({
+                    const res = await createLoja({
                         name,
                         email,
                         password: passwordEncrypto,
                         idLogo: file
                     })
+                    setLoja(res)
                     document.location ="/dashbord"
                 }
             setLoad(false)
@@ -66,12 +76,15 @@ type MainPageLoginType = {
             setErr(false)
             const passwordEncrypto = encryptoPassword(password)
            const res =  await loginLoja(email,passwordEncrypto)
-           if(res.length === 0) {
+           if(res === undefined) {
             setErr(true)
-            setErr("Não exite nenhuma loja cadastrada com esse email e senha")
+            setErr("Não exite nenhuma loja cadastrada com este email e senha")
             setLoad(false)
+           }else {
+            setLoja(res)
+            document.location ="/dashbord"
            }
-           document.location ="/dashbord"
+          
            setLoad(false)
         }
      } 
@@ -91,7 +104,7 @@ type MainPageLoginType = {
                         { load && <Spinner size={32} className="animate-spin" />}
                     </div>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center my-6">
                     {
                             err && <div className="w-[300px] text-xs text-center">
                              {err}
@@ -120,7 +133,7 @@ type MainPageLoginType = {
                             { load && <Spinner size={32} className="animate-spin" />}
                         </div>
                      </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center my-6">
                     {
                             err && <div className="w-[300px] text-xs text-center">
                              {err}

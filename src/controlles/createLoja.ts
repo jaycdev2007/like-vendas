@@ -13,6 +13,15 @@ export async function  createLoja({ name,email,password,idLogo  }:ILoja ) {
                 data: {senha: "${password}", nomeDaLoja: "${name}", emailDaLoja: "${email}", dataDeIncerramentoDoServico: "${date}", validadeDoServico: "true", dataDeEscricaoDoServico: "${dataDeEscricaoDoServico}", logoDaLoja: {connect: {id: "${idLogo}"}}}
                 ){
                     id
+                    senha
+                    nomeDaLoja
+                    logoDaLoja {
+                        url
+                    }
+                    emailDaLoja
+                    dataDeEscricaoDoServico
+                    dataDeIncerramentoDoServico
+                    validadeDoServico
                 }
             }
         ` 
@@ -26,5 +35,5 @@ export async function  createLoja({ name,email,password,idLogo  }:ILoja ) {
         body: form
       })
       const data = await res.json()
-      console.log(data,form)
+      return data.data
 }

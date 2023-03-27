@@ -34,7 +34,7 @@ export function InputPassword({ isLogin,text,setPassword }: InputPasswordType) {
                 }
                 </div>
             </div>
-            {isLogin == true ? <ButtonSecond text="Esquece a minha senha" url="#" sizeText="text-xs"/> :
+            {isLogin == true ? <ButtonSecond text="Esquece a minha senha" url="/esquece-senha" sizeText="text-xs"/> :
             <div className="text-xs font-light">
                 Letra maiuscula no inicio e pelo menos um número
             </div>}

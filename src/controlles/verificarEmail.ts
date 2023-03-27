@@ -9,6 +9,7 @@ export async function verificarEmail(email:string) {
           lojas {
             id
             emailDaLoja
+            senha
           }
         }
     ` 
@@ -23,7 +24,7 @@ export async function verificarEmail(email:string) {
     const data = await res.json()
 
     const lojas = data.data.lojas
-    const emailExiste = lojas.filter((loja:ILoja) => {
+    const emailExiste = lojas.find((loja:ILoja) => {
       return loja.emailDaLoja === email
     })
  return emailExiste
