@@ -59,7 +59,7 @@ type MainPageLoginType = {
                         idLogo: file
                     })
                     setLoja(res)
-                    document.location ="/dashbord"
+                    document.location =`/${res.emailDaLoja}/dashbord`
                 }
             setLoad(false)
         }
@@ -82,7 +82,7 @@ type MainPageLoginType = {
             setLoad(false)
            }else {
             setLoja(res)
-            document.location ="/dashbord"
+            document.location = `/${res.emailDaLoja}/dashbord`
            }
           
            setLoad(false)

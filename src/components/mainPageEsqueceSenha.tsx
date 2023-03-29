@@ -35,7 +35,7 @@ export function MainPageEsqueSenha() {
             </p>
             <Input typeInput="email" text="email" setValue={setEmail} />
             <div className="my-6 flex gap-2">
-                <button className="py-2 px-6 rounded-lg bg-blue-500 text-white hover:text-black hover:bg-white transition-all" onClick={sendEmail}>Entar</button>
+                <button className="py-2 px-6 rounded-lg bg-blue-500 text-white hover:text-black hover:bg-white transition-all" onClick={sendEmail}>Enviar</button>
                 { load && <Spinner size={32} className="animate-spin" />}
             </div>
             <p className="p-3 text-center pb-12">

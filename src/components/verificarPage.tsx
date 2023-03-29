@@ -1,13 +1,11 @@
-"use client"
 import { verificarValidadeDoServico } from "@/controlles/verificarValidadeDoServico"
-import { useEffect,useState } from "react"
+import { useEffect } from "react"
 
-export default function Dashbord() {
-    const [loja,setLoja] = useState()
+export function verificarPage() {
     useEffect(() => {
         const res = localStorage.getItem("loja")
         if(res === null){
-            document.location = "/"
+            document.location = "/login"
         }else {
         const resLoja = JSON.parse(`${res}`)
         const dataDeTermino = `${resLoja.dataDeIncerramentoDoServico}`
@@ -19,9 +17,4 @@ export default function Dashbord() {
             }
         }
    })
-    return (
-        <h1>
-            oi
-        </h1>
-    )
 }

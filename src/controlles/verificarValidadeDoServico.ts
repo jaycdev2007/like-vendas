@@ -1,5 +1,4 @@
 export function verificarValidadeDoServico(dataDeTermino:string) {
-    console.log(dataDeTermino)
     const data = new Date()
     const newDataDeTermino = new Date(dataDeTermino)
     
