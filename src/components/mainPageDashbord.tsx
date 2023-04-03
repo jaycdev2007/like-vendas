@@ -1,12 +1,12 @@
 "use client"
 import { Button } from "./button";
 import { TabelaDeProdutos } from "./tabelaDeProdutos";
-import { getDataLoja } from "./getDataLoja"
+import { GetDataLoja } from "./getDataLoja"
 import { useState, useEffect } from "react";
 import { getProdutos } from "@/controlles/getProdutos";
 
 export function MainPageDashbord() {
-    const loja = getDataLoja()
+    const loja = GetDataLoja()
     const [produtos,setProdutos] = useState<any>()
      
     useEffect(() => {

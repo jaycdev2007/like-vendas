@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 
-export function getDataLoja() {
+export function GetDataLoja() {
     const [data,setData] = useState<any>()
     useEffect(() => {
         const res = localStorage.getItem("loja")
