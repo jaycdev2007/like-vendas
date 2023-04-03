@@ -14,7 +14,7 @@ export function TabelaDeProdutos({ produtos }: any) {
             {
                 data === undefined ? <div className="min-w-full min-h-[30vh] flex justify-center items-center">Não tem nunhum produto cadastrado</div> :
                 data.map((produto:any) => {
-                    return <Link href="#" className="bg-slate-200 p-4 flex justify-between text-xs gap-3 hover:text-white hover:bg-blue-500 transition-all">
+                    return <Link key={produto.id} href="#" className="bg-slate-200 p-4 flex justify-between text-xs gap-3 hover:text-white hover:bg-blue-500 transition-all">
                     <div className="w-1/3 text-center">{produto.nomeDoProduto}</div>
                     <div className="w-1/3 text-center">{produto.quantidadeRestante}</div>
                     <div className="w-1/3 text-center">{produto.quantidadeVendida}</div>

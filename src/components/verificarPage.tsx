@@ -1,7 +1,7 @@
 import { verificarValidadeDoServico } from "@/controlles/verificarValidadeDoServico"
 import { useEffect } from "react"
 
-export function verificarPage() {
+export function VerificarPage() {
     useEffect(() => {
         const res = localStorage.getItem("loja")
         if(res === null){
@@ -16,5 +16,5 @@ export function verificarPage() {
                 document.location = "/pagamento"
             }
         }
-   })
+   },[])
 }
