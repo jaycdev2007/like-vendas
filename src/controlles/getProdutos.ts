@@ -25,6 +25,5 @@ export async function getProdutos(email:string) {
       const produtos = data.data.produtos.filter((produto:any) => {
         return produto.emailDaLoja === email
       })
-
       return produtos
 }
